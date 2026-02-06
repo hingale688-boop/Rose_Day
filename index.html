@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Rose for Cherie 🌹</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #b11226, #3b0a12);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.14);
+      padding: 50px 40px;
+      border-radius: 35px;
+      max-width: 560px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 2s ease;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+    button {
+      background: linear-gradient(135deg, #ffdde1, #ffffff);
+      color: #b11226;
+      border: none;
+      padding: 15px 34px;
+      font-size: 1.1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    button:hover { transform: scale(1.12); }
+
+    #msg {
+      display: none;
+      font-size: 1.5rem;
+      margin-top: 30px;
+      animation: pop 0.8s ease forwards;
+    }
+
+    .rose {
+      position: absolute;
+      font-size: 28px;
+      animation: fall linear infinite;
+      opacity: 0.9;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 22px;
+      animation: floatUp 5s ease-out infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fall {
+      from { top: -10%; }
+      to { top: 110%; }
+    }
+    @keyframes floatUp {
+      from { bottom: -10%; }
+      to { bottom: 110%; }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Happy Rose Day, Cherie 🌹</h1>
+    <p>
+      Some flowers fade with time…<br/>
+      but the way you make me feel,
+      only grows stronger.
+      <br/><br/>
+      So today, I didn’t just send you a rose…
+    </p>
+
+    <button onclick="reveal()">Touch the Rose 🌹</button>
+
+    <div id="msg">
+      🌹❤️🌹<br/>
+      This rose carries every smile you gave me,
+      every quiet moment,
+      and every feeling I haven’t said out loud yet.
+      <br/><br/>
+      Cherie… you’re my favorite thought.
+      <br/><br/>
+      — Always yours,<br/>
+      <strong>Hash</strong>
+    </div>
+  </div>
+
+  <script>
+    function reveal() {
+      document.getElementById('msg').style.display = 'block';
+      document.getElementById('music').play();
+
+      for (let i = 0; i < 30; i++) {
+        const rose = document.createElement('div');
+        rose.className = 'rose';
+        rose.innerHTML = '🌹';
+        rose.style.left = Math.random() * 100 + 'vw';
+        rose.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        document.body.appendChild(rose);
+        setTimeout(() => rose.remove(), 8000);
+      }
+
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>
